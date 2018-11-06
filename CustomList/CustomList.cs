@@ -8,12 +8,24 @@ namespace CustomList
 {
     public class CustomList<T>
     {
+        CustomList<T> customList = new CustomList<T>();
         T value;
-        CustomList<T> customList = new CustomList<int>();
-
-        public CustomList(T value)
+        
+        public void Count(T value)
         {
-            this.value = value;
+            
+        }
+        
+        public void Remove(T value)
+        {
+            
+        }
+
+        public void Add(T value)
+        {
+            
+            int i = customList[0];
+            
         }
     }
 }
