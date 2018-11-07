@@ -15,7 +15,7 @@ namespace CustomListTest
             int expected = 1;
 
             //Act
-            list.Add(16);
+            list.Add(12);
 
             //Assert
             Assert.AreEqual(expected, list.Count);
@@ -26,11 +26,11 @@ namespace CustomListTest
         {
             //Arrange
             CustomList<int> list = new CustomList<int>();
-            int expected = 17;
+            int expected = 13;
 
             //Act
-            list.Add(16);
-            list.Add(17);
+            list.Add(12);
+            list.Add(13);
 
             //Assert
             Assert.AreEqual(expected, list[1]);
@@ -41,11 +41,11 @@ namespace CustomListTest
         {
             //Arrange
             CustomList<int> list = new CustomList<int>();
-            int expected = 16;
+            int expected = 12;
 
             //Act
-            list.Add(16);
-            list.Add(17);
+            list.Add(12);
+            list.Add(13);
 
             //Assert
             Assert.AreEqual(expected, list[0]);
@@ -58,16 +58,13 @@ namespace CustomListTest
             //Arrange
             CustomList<int> list = new CustomList<int>();
             int actual;
-            //int expected;
 
             //Act
-            list.Add(16);
-            list.Add(17);
-            list.Add(18);
+            list.Add(12);
+            list.Add(13);
+            list.Add(14);
             actual = list[list.Count];
 
-            //Assert
-            //Assert.AreEqual(expected, list[list.Count]);
         }
 
         [TestMethod]
@@ -75,12 +72,12 @@ namespace CustomListTest
         {
             //Arrange
             CustomList<int> list = new CustomList<int>();
-            int expected = 18;
+            int expected = 14;
 
             //Act
-            list.Add(16);
-            list.Add(17);
-            list.Add(18);
+            list.Add(12);
+            list.Add(13);
+            list.Add(14);
             list.Remove(list[1]);
 
             //Assert
@@ -95,9 +92,9 @@ namespace CustomListTest
             int expected = 2;
 
             //Act
-            list.Add(16);
-            list.Add(17);
-            list.Add(18);
+            list.Add(12);
+            list.Add(13);
+            list.Add(14);
             list.Remove(list[1]);
 
             //Assert
@@ -106,22 +103,63 @@ namespace CustomListTest
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
-        public void Test_RemoveFromList_IndexCount()
+        public void Test_RemoveFromList_IndexAtCount()
         {
             //Arrange
             CustomList<int> list = new CustomList<int>();
-            int expected = 17;
+            int expected;
             int actual;
 
             //Act
-            list.Add(16);
-            list.Add(17);
-            list.Add(18);
+            list.Add(12);
+            list.Add(13);
+            list.Add(14);
             list.Remove(list[1]);
-            actual = list[list.Count];
 
             //Assert
-            Assert.AreEqual(expected, list[1]);
+            actual = list[list.Count];
+        }
+
+        [TestMethod]
+        public void Test_Combine_TwoListInstances()
+        {
+            //Arrange
+            CustomList<int> list = new CustomList<int>();
+            CustomList<int> list2 = new CustomList<int>();
+            int expected = { 1, 2, 3, 4, 5, 6 };
+
+            //Act
+            list.Add(1);
+            list.Add(2);
+            list.Add(3);
+            list2.Add(4);
+            list2.Add(5);
+            list2.Add(6);
+            CustomList<int> combinedList = list + list2;
+
+            //Assert
+            Assert.AreEqual(expected, combinedList);
+        }
+
+        [TestMethod]
+        public void Test_ZipCombine_TwoListInstances()
+        {
+            //Arrange
+            CustomList<int> list = new CustomList<int>();
+            CustomList<int> list2 = new CustomList<int>();
+            int expected = { 1, 4, 2, 5, 3, 6 };
+
+            //Act
+            list.Add(1);
+            list.Add(2);
+            list.Add(3);
+            list2.Add(4);
+            list2.Add(5);
+            list2.Add(6);
+            CustomList<int> zipCombinedList = Zip(list + list2);
+
+            //Assert
+            Assert.AreEqual(expected, zipCombinedList);
         }
     }
 }
