@@ -37,6 +37,29 @@ namespace CustomListTest
         }
 
         [TestMethod]
+        public void Test_AddToList_ExpandCapacity()
+        {
+            //Arrange
+            CustomList<int> list = new CustomList<int>();
+            int expected = 21;
+
+            //Act
+            list.Add(12);
+            list.Add(13);
+            list.Add(14);
+            list.Add(15);
+            list.Add(16);
+            list.Add(17);
+            list.Add(18);
+            list.Add(19);
+            list.Add(20);
+            list.Add(21);
+
+            //Assert
+            Assert.AreEqual(expected, list[9]);
+        }
+
+        [TestMethod]
         public void Test_AddToList_IndexZeroUnchanged()
         {
             //Arrange
@@ -120,46 +143,46 @@ namespace CustomListTest
             actual = list[list.Count];
         }
 
-        [TestMethod]
-        public void Test_Combine_TwoListInstances()
-        {
-            //Arrange
-            CustomList<int> list = new CustomList<int>();
-            CustomList<int> list2 = new CustomList<int>();
-            int expected = { 1, 2, 3, 4, 5, 6 };
+        //[TestMethod]
+        //public void Test_Combine_TwoListInstances()
+        //{
+        //    //Arrange
+        //    CustomList<int> list = new CustomList<int>();
+        //    CustomList<int> list2 = new CustomList<int>();
+        //    int expected = { 1, 2, 3, 4, 5, 6 };
 
-            //Act
-            list.Add(1);
-            list.Add(2);
-            list.Add(3);
-            list2.Add(4);
-            list2.Add(5);
-            list2.Add(6);
-            CustomList<int> combinedList = list + list2;
+        //    //Act
+        //    list.Add(1);
+        //    list.Add(2);
+        //    list.Add(3);
+        //    list2.Add(4);
+        //    list2.Add(5);
+        //    list2.Add(6);
+        //    CustomList<int> combinedList = list + list2;
 
-            //Assert
-            Assert.AreEqual(expected, combinedList);
-        }
+        //    //Assert
+        //    Assert.AreEqual(expected, combinedList);
+        //}
 
-        [TestMethod]
-        public void Test_ZipCombine_TwoListInstances()
-        {
-            //Arrange
-            CustomList<int> list = new CustomList<int>();
-            CustomList<int> list2 = new CustomList<int>();
-            int expected = { 1, 4, 2, 5, 3, 6 };
+        //[TestMethod]
+        //public void Test_ZipCombine_TwoListInstances()
+        //{
+        //    //Arrange
+        //    CustomList<int> list = new CustomList<int>();
+        //    CustomList<int> list2 = new CustomList<int>();
+        //    int expected = { 1, 4, 2, 5, 3, 6 };
 
-            //Act
-            list.Add(1);
-            list.Add(2);
-            list.Add(3);
-            list2.Add(4);
-            list2.Add(5);
-            list2.Add(6);
-            CustomList<int> zipCombinedList = Zip(list + list2);
+        //    //Act
+        //    list.Add(1);
+        //    list.Add(2);
+        //    list.Add(3);
+        //    list2.Add(4);
+        //    list2.Add(5);
+        //    list2.Add(6);
+        //    CustomList<int> zipCombinedList = Zip(list + list2);
 
-            //Assert
-            Assert.AreEqual(expected, zipCombinedList);
-        }
+        //    //Assert
+        //    Assert.AreEqual(expected, zipCombinedList);
+        //}
     }
 }
