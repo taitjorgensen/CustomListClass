@@ -8,7 +8,7 @@ namespace CustomList
 {
     public class CustomList<T>
     {
-        public T[] values;
+        T[] values;
         int count;
         int capacity;
         
@@ -66,7 +66,34 @@ namespace CustomList
         }
         public void Remove(T value)
         {
-
+            //T[] arrayRemovingFrom = array;
+            CustomList<T> newList = new CustomList<T>();
+            T[] newValues = new T[capacity];
+            int j;
+            int i = 0;
+            j = i;
+            for (i = 0; i < count; i++)
+            {
+                T compareValue = newValues[i];
+                
+                if (value.Equals(compareValue))
+                {
+                    j = i + 1;
+                }
+                else if (j == i)
+                {
+                    newList.Add(compareValue);
+                    newValues[j] = newList[i];
+                }
+                else
+                {
+                    newList.Add(compareValue);
+                    newValues[j] = newList[i];
+                    j++;
+                }
+                //newValues[j] = newList[i];
+            }
+            values = newValues;            
         }
 
 

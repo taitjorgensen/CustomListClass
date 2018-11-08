@@ -8,7 +8,7 @@ namespace CustomListTest
     public class CustomListTests
     {
         [TestMethod]
-        public void Test_Add_IndexZero()
+        public void Test_Count_IndexZero()
         {
             //Arrange
             CustomList<int> list = new CustomList<int>();
@@ -19,6 +19,21 @@ namespace CustomListTest
 
             //Assert
             Assert.AreEqual(expected, list.Count);
+        }
+
+        public void Test_Add__String()
+        {
+            //Arrange
+            CustomList<string> list = new CustomList<string>();
+            string expected = "purple";
+
+            //Act
+            list.Add("red");
+            list.Add("blue");
+            list.Add("purple");
+
+            //Assert
+            Assert.AreEqual(expected, list[2]);
         }
 
         [TestMethod]
@@ -143,46 +158,81 @@ namespace CustomListTest
             actual = list[list.Count];
         }
 
-        //[TestMethod]
-        //public void Test_Combine_TwoListInstances()
-        //{
-        //    //Arrange
-        //    CustomList<int> list = new CustomList<int>();
-        //    CustomList<int> list2 = new CustomList<int>();
-        //    int expected = { 1, 2, 3, 4, 5, 6 };
+        [TestMethod]
+        public void Test_Combine_TwoListInstances()
+        {
+            //Arrange
+            CustomList<int> list = new CustomList<int>();
+            CustomList<int> list2 = new CustomList<int>();
+            //int expected = { 1, 2, 3, 4, 5, 6 };
 
-        //    //Act
-        //    list.Add(1);
-        //    list.Add(2);
-        //    list.Add(3);
-        //    list2.Add(4);
-        //    list2.Add(5);
-        //    list2.Add(6);
-        //    CustomList<int> combinedList = list + list2;
+            //Act
+            list.Add(1);
+            list.Add(2);
+            list.Add(3);
+            list2.Add(4);
+            list2.Add(5);
+            list2.Add(6);
+            //CustomList<int> combinedList = list + list2;
 
-        //    //Assert
-        //    Assert.AreEqual(expected, combinedList);
-        //}
+            //Assert
+            //Assert.AreEqual(expected, combinedList);
+        }
 
-        //[TestMethod]
-        //public void Test_ZipCombine_TwoListInstances()
-        //{
-        //    //Arrange
-        //    CustomList<int> list = new CustomList<int>();
-        //    CustomList<int> list2 = new CustomList<int>();
-        //    int expected = { 1, 4, 2, 5, 3, 6 };
+        [TestMethod]
+        public void Test_ZipCombine_TwoListInstances()
+        {
+            //Arrange
+            CustomList<int> list = new CustomList<int>();
+            CustomList<int> list2 = new CustomList<int>();
+            //int expected = { 1, 4, 2, 5, 3, 6 };
 
-        //    //Act
-        //    list.Add(1);
-        //    list.Add(2);
-        //    list.Add(3);
-        //    list2.Add(4);
-        //    list2.Add(5);
-        //    list2.Add(6);
-        //    CustomList<int> zipCombinedList = Zip(list + list2);
+            //Act
+            list.Add(1);
+            list.Add(2);
+            list.Add(3);
+            list2.Add(4);
+            list2.Add(5);
+            list2.Add(6);
+            //CustomList<int> zipCombinedList = Zip(list + list2);
 
-        //    //Assert
-        //    Assert.AreEqual(expected, zipCombinedList);
-        //}
+            //Assert
+            //Assert.AreEqual(expected, zipCombinedList);
+        }
+
+        [TestMethod]
+        public void Test_ToString_Integers()
+        {
+            //Arrange
+            CustomList<int> list = new CustomList<int>();
+            //string expected = "12, 13, 14";
+
+            //Act
+            list.Add(12);
+            list.Add(13);
+            list.Add(14);
+            //list.ToString(list);
+
+            //Assert
+            //Assert.AreEqual(expected, list.ToString(list));
+        }
+
+        [TestMethod]
+        public void Test_ToString_Strings()
+        {
+            //Arrange
+            CustomList<string> list = new CustomList<string>();
+            string expected = "Go Pack Go !";
+
+            //Act
+            list.Add("Go");
+            list.Add("Pack");
+            list.Add("Go");
+            list.Add("!");
+            //list.ToString(list);
+
+            //Assert
+            //Assert.AreEqual(expected, list.ToString(list));
+        }
     }
 }
