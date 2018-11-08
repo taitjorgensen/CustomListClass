@@ -67,8 +67,7 @@ namespace CustomList
         public void Remove(T value)
         {
             T[] arrayRemovingFrom = values;
-            CustomList<T> newList = new CustomList<T>();
-        
+            CustomList<T> newList = new CustomList<T>();       
             T[] newValues = new T[capacity];
             int j;
             int i = 0;
@@ -76,7 +75,6 @@ namespace CustomList
             for (i = 0; i < count; i++)
             {
                 T compareValue = arrayRemovingFrom[i];
-
                 if (j == i - 1)
                 {
                     newList.Add(compareValue);
@@ -85,11 +83,6 @@ namespace CustomList
                 else if (value.Equals(compareValue))
                 {
                     
-                }
-                else if (j == i)
-                {
-                    newList.Add(compareValue);
-                    j++;
                 }
                 else
                 {
@@ -107,7 +100,20 @@ namespace CustomList
                 values = newList.values;
             }
         }
-
+        public override string ToString()
+        {          
+            //CustomList<string> newList = new CustomList<string>();
+            StringBuilder builder = new StringBuilder();
+            for (int i = 0; i < count; i++)
+            {
+                
+                builder.Append(values[i]).Append(" ");
+                
+            }
+            var newString = builder.ToString();
+            return newString;
+            //Console.ReadLine();
+        }
 
         //public static CustomList operator +(T values, T values2)
         //{

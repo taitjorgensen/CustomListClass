@@ -91,8 +91,8 @@ namespace CustomListTest
         }
 
         [TestMethod]
-        [ExpectedException(typeof(ArgumentOutOfRangeException))]
-        public void Test_Add_IndexAtCount()
+        [ExpectedException(typeof(IndexOutOfRangeException))]
+        public void Test_Range_IndexAt1000()
         {
             //Arrange
             CustomList<int> list = new CustomList<int>();
@@ -102,8 +102,27 @@ namespace CustomListTest
             list.Add(12);
             list.Add(13);
             list.Add(14);
-            actual = list[list.Count];
+            int outOfRange = list[1000];
 
+            actual = outOfRange;
+
+        }
+        [TestMethod]
+        public void Test_Range_IndexCount()
+        {
+            //Arrange
+            CustomList<int> list = new CustomList<int>();
+            int expected = 0;
+            int actual = list[list.Count];
+
+            //Act
+            list.Add(12);
+            list.Add(13);
+            list.Add(14);
+            list.Add(15);
+
+            //Assert
+            Assert.AreEqual(expected, actual);
         }
 
         [TestMethod]
@@ -139,14 +158,32 @@ namespace CustomListTest
             //Assert
             Assert.AreEqual(expected, list.Count);
         }
+        [TestMethod]
+        public void Test_RemoveFromList_EntireList()
+        {
+            //Arrange
+            CustomList<int> list = new CustomList<int>();
+            int expected = 0;
+
+            //Act
+            list.Add(12);
+            list.Add(13);
+            list.Add(14);
+
+            for (int i = list.Count - 1; i >= 0; i--)
+            {
+                list.Remove(list[i]);
+            }
+            //Assert
+            Assert.AreEqual(expected, list.Count);
+        }
 
         [TestMethod]
-        [ExpectedException(typeof(ArgumentOutOfRangeException))]
         public void Test_RemoveFromList_IndexAtCount()
         {
             //Arrange
             CustomList<int> list = new CustomList<int>();
-            int expected;
+            int expected = 0;
             int actual;
 
             //Act
@@ -154,9 +191,10 @@ namespace CustomListTest
             list.Add(13);
             list.Add(14);
             list.Remove(list[1]);
+            actual = list[list.Count];
 
             //Assert
-            actual = list[list.Count];
+            Assert.AreEqual(expected, actual);
         }
 
         [TestMethod]
@@ -206,16 +244,16 @@ namespace CustomListTest
         {
             //Arrange
             CustomList<int> list = new CustomList<int>();
-            string expected = "12, 13, 14";
+            string expected = "12 13 14 ";
 
             //Act
             list.Add(12);
             list.Add(13);
             list.Add(14);
-            //list.ToString(list);
+            string actual = list.ToString();
 
             //Assert
-            //Assert.AreEqual(expected, list.ToString(list));
+            Assert.AreEqual(expected, actual);
         }
 
         [TestMethod]
@@ -223,17 +261,17 @@ namespace CustomListTest
         {
             //Arrange
             CustomList<string> list = new CustomList<string>();
-            string expected = "Go Pack Go !";
+            string expected = "Go Pack Go ! ";
 
             //Act
             list.Add("Go");
             list.Add("Pack");
             list.Add("Go");
             list.Add("!");
-            //list.ToString(list);
+            string actual = list.ToString();
 
             //Assert
-            //Assert.AreEqual(expected, list.ToString(list));
+            Assert.AreEqual(expected, actual);
         }
     }
 }

@@ -16,7 +16,7 @@ namespace CustomList
             numbers.Add(8);
             numbers.Add(5);
             numbers.Add(12);
-            numbers.Remove(5);
+            numbers.ToString();
         }
     }
 }
