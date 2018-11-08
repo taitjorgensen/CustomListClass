@@ -11,7 +11,12 @@ namespace CustomList
         static void Main(string[] args)
         {
             CustomList<int> numbers = new CustomList<int>();
-            
+            numbers.Add(2);
+            numbers.Add(5);
+            numbers.Add(8);
+            numbers.Add(5);
+            numbers.Add(12);
+            numbers.Remove(5);
         }
     }
 }

@@ -21,6 +21,7 @@ namespace CustomListTest
             Assert.AreEqual(expected, list.Count);
         }
 
+        [TestMethod]
         public void Test_Add__String()
         {
             //Arrange
@@ -205,7 +206,7 @@ namespace CustomListTest
         {
             //Arrange
             CustomList<int> list = new CustomList<int>();
-            //string expected = "12, 13, 14";
+            string expected = "12, 13, 14";
 
             //Act
             list.Add(12);
