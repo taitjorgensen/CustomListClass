@@ -203,7 +203,8 @@ namespace CustomListTest
             //Arrange
             CustomList<int> list = new CustomList<int>();
             CustomList<int> list2 = new CustomList<int>();
-            //int expected = { 1, 2, 3, 4, 5, 6 };
+            CustomList<int> combinedList = new CustomList<int>();
+            int[] expected = { 1, 2, 3, 4, 5, 6 };
 
             //Act
             list.Add(1);
@@ -212,19 +213,46 @@ namespace CustomListTest
             list2.Add(4);
             list2.Add(5);
             list2.Add(6);
-            //CustomList<int> combinedList = list + list2;
+            combinedList = list + list2;
+            int[] actual = new int[combinedList.Count];
+            for (int i = 0; i < combinedList.Count; i++)
+            {
+                actual[i] = combinedList[i];
+            }
+            
 
             //Assert
-            //Assert.AreEqual(expected, combinedList);
+            Assert.ReferenceEquals(expected, actual);
         }
+        [TestMethod]
+        public void Test_Combine_CountIncrease()
+        {
+            //Arrange
+            CustomList<int> list = new CustomList<int>();
+            CustomList<int> list2 = new CustomList<int>();
+            int expected = 6;
 
+            //Act
+            list.Add(1);
+            list.Add(2);
+            list.Add(3);
+            list2.Add(4);
+            list2.Add(5);
+            list2.Add(6);
+            CustomList<int> combinedList = list + list2;
+            int actual = combinedList.Count;
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
         [TestMethod]
         public void Test_ZipCombine_TwoListInstances()
         {
             //Arrange
             CustomList<int> list = new CustomList<int>();
             CustomList<int> list2 = new CustomList<int>();
-            //int expected = { 1, 4, 2, 5, 3, 6 };
+            CustomList<int> combinedList = new CustomList<int>();
+            int[] expected = { 1, 4, 2, 5, 3, 6 };
 
             //Act
             list.Add(1);
@@ -233,12 +261,33 @@ namespace CustomListTest
             list2.Add(4);
             list2.Add(5);
             list2.Add(6);
-            //CustomList<int> zipCombinedList = Zip(list + list2);
+            combinedList.ZipCombine(list, list2);
+            int[] actual = combinedList.values;
 
             //Assert
-            //Assert.AreEqual(expected, zipCombinedList);
+            Assert.ReferenceEquals(expected, actual);
         }
+        [TestMethod]
+        public void Test_Combine_AtIndex()
+        {
+            //Arrange
+            CustomList<int> list = new CustomList<int>();
+            CustomList<int> list2 = new CustomList<int>();
+            int expected = 4;
 
+            //Act
+            list.Add(1);
+            list.Add(2);
+            list.Add(3);
+            list2.Add(4);
+            list2.Add(5);
+            list2.Add(6);
+            CustomList<int> combinedList = list + list2;
+            int actual = combinedList[3];
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
         [TestMethod]
         public void Test_ToString_Integers()
         {

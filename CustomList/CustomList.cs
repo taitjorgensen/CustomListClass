@@ -8,7 +8,7 @@ namespace CustomList
 {
     public class CustomList<T>
     {
-        private T[] values;
+        public T[] values;
         int count;
         int capacity;
         
@@ -81,8 +81,7 @@ namespace CustomList
                     j++;
                 }
                 else if (value.Equals(compareValue))
-                {
-                    
+                {                   
                 }
                 else
                 {
@@ -102,7 +101,6 @@ namespace CustomList
         }
         public override string ToString()
         {          
-            //CustomList<string> newList = new CustomList<string>();
             StringBuilder builder = new StringBuilder();
             for (int i = 0; i < count; i++)
             {
@@ -119,6 +117,38 @@ namespace CustomList
             return newString;
         }
 
+        //public void Combine(T values, T values2)
+        //{
+        //    CustomList<T> newList = new CustomList<T>;
+        //    var values;
+        //    var values2;
+
+
+        //}
+        public static CustomList<T> operator +(CustomList<T> listOne, CustomList<T> listTwo)
+        {
+            CustomList<T> newList = new CustomList<T>();
+            for (int i = 0; i < listOne.Count; i++)
+            {
+                newList.Add(listOne[i]);
+            }
+            for (int i = 0; i < listTwo.count; i++)
+            {
+                newList.Add(listTwo[i]);
+            }
+            return newList;
+        }
+        public void ZipCombine(CustomList<T> listOne, CustomList<T> listTwo)
+        {
+            CustomList<T> newList = new CustomList<T>();
+            for (int i = 0; i < listOne.Count || i < listTwo.count; i++)
+            {
+                newList.Add(listOne.values[i]);
+                newList.Add(listTwo.values[i]);
+            }
+            values = newList.values;
+        }
+
         //public static CustomList operator +(T values, T values2)
         //{
         //    combinedList = new CustomList<T>();
@@ -133,5 +163,6 @@ namespace CustomList
         //{
 
         //}
+
     }
 }
