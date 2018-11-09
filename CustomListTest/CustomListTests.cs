@@ -220,7 +220,6 @@ namespace CustomListTest
                 actual[i] = combinedList[i];
             }
             
-
             //Assert
             Assert.ReferenceEquals(expected, actual);
         }
@@ -244,6 +243,27 @@ namespace CustomListTest
 
             //Assert
             Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void Test_Override_MinusOperator()
+        {
+            //Arrange
+            CustomList<int> list = new CustomList<int>();
+            CustomList<int> list2 = new CustomList<int>();
+            int[] expected = { 1 };
+
+            //Act
+            list.Add(1);
+            list.Add(2);
+            list.Add(3);
+            list2.Add(4);
+            list2.Add(3);
+            list2.Add(2);
+            CustomList<int> subtractedList = list - list2;
+            int[] actual = subtractedList.values;
+
+            //Assert
+            Assert.ReferenceEquals(expected, actual);
         }
         [TestMethod]
         public void Test_ZipCombine_TwoListInstances()
