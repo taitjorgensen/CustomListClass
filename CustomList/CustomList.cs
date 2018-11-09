@@ -106,13 +106,17 @@ namespace CustomList
             StringBuilder builder = new StringBuilder();
             for (int i = 0; i < count; i++)
             {
-                
-                builder.Append(values[i]).Append(" ");
-                
+                if (i == count - 1)
+                {
+                    builder.Append(values[i]);
+                }
+                else
+                {
+                    builder.Append(values[i]).Append(" ");
+                }
             }
             var newString = builder.ToString();
             return newString;
-            //Console.ReadLine();
         }
 
         //public static CustomList operator +(T values, T values2)

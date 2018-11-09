@@ -244,7 +244,7 @@ namespace CustomListTest
         {
             //Arrange
             CustomList<int> list = new CustomList<int>();
-            string expected = "12 13 14 ";
+            string expected = "12 13 14";
 
             //Act
             list.Add(12);
@@ -261,7 +261,7 @@ namespace CustomListTest
         {
             //Arrange
             CustomList<string> list = new CustomList<string>();
-            string expected = "Go Pack Go ! ";
+            string expected = "Go Pack Go !";
 
             //Act
             list.Add("Go");
