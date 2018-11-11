@@ -125,14 +125,6 @@ namespace CustomList
             return newString;
         }
 
-        //public void Combine(T values, T values2)
-        //{
-        //    CustomList<T> newList = new CustomList<T>;
-        //    var values;
-        //    var values2;
-
-
-        //}
         public static CustomList<T> operator +(CustomList<T> listOne, CustomList<T> listTwo)
         {
             CustomList<T> newList = new CustomList<T>();
@@ -150,23 +142,29 @@ namespace CustomList
         {
             CustomList<T> newList = new CustomList<T>();
             int i;
-            
-            for (i = 0; i < listTwo.Count; i++)
+            int j;
+            string originalList = listOne.ToString();
+            string comparingList = listTwo.ToString();
+            for (i = 0; i < listOne.Count; i++)
             {
-                T compareValue = listTwo[i];
-                for (i = 0; i < listOne.Count; i++)
-                {
-                    if (compareValue != listOne[i])
-                    {
 
+                for (j = 0; j < listTwo.Count; j++)
+                {
+                    if (comparingList[j] == originalList[i])
+                    {
+                        i++;                        
+                    }
+                    else if (j == listTwo.Count - 1)
+                    {
+                        newList.Add(listOne[i]);
+                        i++;
                     }
                     else
-                    {
-
-                        break;
+                    {                       
                     }
                 }
             }
+            T[] values = newList.values;
             return newList;
         }
         public void ZipCombine(CustomList<T> listOne, CustomList<T> listTwo)
@@ -179,21 +177,5 @@ namespace CustomList
             }
             values = newList.values;
         }
-
-        //public static CustomList operator +(T values, T values2)
-        //{
-        //    combinedList = new CustomList<T>();
-        //    for (int i = 0; i <= (values.length + values2.length); i++)
-        //    {
-        //        combinedList.Add(values[i]);
-        //        combinedList.Add(values2[i]);
-        //    }
-        //    return combinedList;
-        //}
-        //public static implicit operator T(combinedList)
-        //{
-
-        //}
-
     }
 }

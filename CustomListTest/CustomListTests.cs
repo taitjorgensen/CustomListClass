@@ -5,7 +5,7 @@ using CustomList;
 namespace CustomListTest
 {
     [TestClass]
-    public class CustomListTests
+    public class CustomListTests 
     {
         [TestMethod]
         public void Test_Count_IndexZero()
@@ -46,6 +46,21 @@ namespace CustomListTest
 
             //Act
             list.Add(12);
+            list.Add(13);
+
+            //Assert
+            Assert.AreEqual(expected, list[1]);
+        }
+        [TestMethod]
+        public void Test_AddToList_Indexing()
+        {
+            //Arrange
+            CustomList<int> list = new CustomList<int>();
+            int expected = 13;
+
+            //Act
+            list.Add(12);
+            list.Add(14);
             list.Add(13);
 
             //Assert
@@ -261,6 +276,27 @@ namespace CustomListTest
             list2.Add(2);
             CustomList<int> subtractedList = list - list2;
             int[] actual = subtractedList.values;
+
+            //Assert
+            Assert.ReferenceEquals(expected, actual);
+        }
+        [TestMethod]
+        public void Test_Override_MinusOperator_UsingStrings()
+        {
+            //Arrange
+            CustomList<string> list = new CustomList<string>();
+            CustomList<string> list2 = new CustomList<string>();
+            string[] expected = { "green yellow" };
+
+            //Act
+            list.Add("green");
+            list.Add("red");
+            list.Add("yellow");
+            list2.Add("blue");
+            list2.Add("orange");
+            list2.Add("red");
+            CustomList<string> subtractedList = list - list2;
+            string[] actual = subtractedList.values;
 
             //Assert
             Assert.ReferenceEquals(expected, actual);

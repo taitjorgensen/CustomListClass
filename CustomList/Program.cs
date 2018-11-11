@@ -10,13 +10,15 @@ namespace CustomList
     {
         static void Main(string[] args)
         {
-            CustomList<int> numbers = new CustomList<int>();
-            numbers.Add(2);
-            numbers.Add(5);
-            numbers.Add(8);
-            numbers.Add(5);
-            numbers.Add(12);
-            numbers.ToString();
+            CustomList<string> colorList = new CustomList<string>();
+            CustomList<string> colorListTwo = new CustomList<string>();
+            colorList.Add("green");
+            colorList.Add("red");
+            colorList.Add("yellow");
+            colorListTwo.Add("blue");
+            colorListTwo.Add("orange");
+            colorListTwo.Add("red");
+            CustomList<string> newColorList = colorList - colorListTwo;
         }
     }
 }

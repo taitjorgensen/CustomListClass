@@ -1,0 +1,11 @@
+﻿The - operator overload was used to remove all repeated entries found in ListTwo from ListOne.
+Whenever a match is found within the CustomList class, it is excluded from being added to the NewList.
+The NewList is written only when the compareValue from ListTwo finds no matches in ListOne.
+
+The - operator overload examines what type 'T' the list is, modifies each index 'ToString', then
+uses a bool to determine a match.
+
+After the index is passed through the 'for loop' looking for a match it is Added to the NewList.
+If a match is found, that index is exluded from being Added.
+
+This in effect removes the item, when in reality is merely 'not adding' or skipping the item.
