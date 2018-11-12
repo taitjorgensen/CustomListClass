@@ -51,21 +51,21 @@ namespace CustomListTest
             //Assert
             Assert.AreEqual(expected, list[1]);
         }
-        [TestMethod]
-        public void Test_AddToList_Indexing()
-        {
-            //Arrange
-            CustomList<int> list = new CustomList<int>();
-            int expected = 13;
+        //[TestMethod]
+        //public void Test_AddToList_Indexing()
+        //{
+        //    //Arrange
+        //    CustomList<int> list = new CustomList<int>();
+        //    int expected = 13;
 
-            //Act
-            list.Add(12);
-            list.Add(14);
-            list.Add(13);
+        //    //Act
+        //    list.Add(12);
+        //    list.Add(14);
+        //    list.Insert(list[1], 13, list);
 
-            //Assert
-            Assert.AreEqual(expected, list[1]);
-        }
+        //    //Assert
+        //    Assert.AreEqual(expected, list[1]);
+        //}
 
         [TestMethod]
         public void Test_AddToList_ExpandCapacity()

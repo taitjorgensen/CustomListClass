@@ -40,7 +40,7 @@ namespace CustomList
         public CustomList()
         {
             count = 0;
-            capacity = 8;
+            capacity = 1;
             values = new T[capacity];
         }
 
@@ -60,11 +60,54 @@ namespace CustomList
             {
                 ExpandCapacity();
             }
-            
         }
+        //public void Insert(int index, int value, CustomList<int> list)
+        //{
+        //    CustomList<int> newList = new CustomList<int>();
+        //    CustomList<int> finalList = new CustomList<int>();
+        //    int i;
+        //    int j;
+        //    for (i = 0; i < count; i++)
+        //    {
+        //        if (index == i)
+        //        {
+        //            newList.values[i] = value;
+        //            for (j = 0; j < count; j++)
+        //            {
+        //                if (newList[j] == list[j])
+        //                {
+        //                    finalList.Add(newList[j]);
+        //                }
+        //                else if (newList[j] != list[j + 1])
+        //                {
+        //                    finalList.Add(newList[j]);
+        //                }
+        //                else
+        //                {
+        //                    finalList.Add(list[j]);
+        //                }
+        //                list.values = finalList.values;
+        //            }
+        //            break;
+        //        }
+        //        else if (i < index)
+        //        {
+        //            newList.Add(list[i]);
+        //        }
+        //        else
+        //        {                  
+        //        }
+                
+        //    }
+        //    count++;
+        //    if (count == capacity)
+        //    {
+        //        ExpandCapacity();
+        //    }
+        //}
         public void ExpandCapacity()
         {
-            capacity = capacity * 2;
+            capacity = capacity + 8;
             T[] newValues = new T[capacity];
             for (int i = 0; i < count; i++)
             {
